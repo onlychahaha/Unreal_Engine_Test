@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Components/SceneComponent.h"
 #include "PhysicsEngine/PhysicsHandleComponent.h"
+#include "GameFramework/Actor.h"
+#include "Components/PrimitiveComponent.h"
 #include "Grabber.generated.h"
 
 
@@ -29,6 +31,12 @@ protected:
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	UPhysicsHandleComponent* GetPhysicsComponent() const;
+
+	UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+	void NotifyQuestActor(AActor* Actor);
+
+	UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+	bool TraceForPhysicsBodies(AActor*& HitActor, UPrimitiveComponent*& HitComponent);
 
 public:
 	// Called every frame
